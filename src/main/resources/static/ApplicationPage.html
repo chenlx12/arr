@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="Charcoal is a free Bootstrap 4 UI kit build by @attacomsian at Wired Dots." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script>
+        function Page() {
+            var cpnumber = $("#cpnumber").val();
+            var department = $("#department").val();
+            var post = $("#post").val();
+            var prat = $("#prat").val();
+            var otfprt = $("#otfprt").val();
+            var WorkingTime = $("#WorkingTime").val();
+            var YworkingTime = $("#YworkingTime").val();
+            var PworkingTime = $("#PworkingTime").val();
+            var honor = $("#honor").val();
+            var mawbaw = $("#mawbaw").val();
+            var spouse = $("#spouse").val();
+            var provideDisasterRelief = $("#provideDisasterRelief").val();
+
+
+            var str = JSON.stringify({
+                id:1,
+                cpnumber : cpnumber,
+                department: department,
+                post:post,
+                prat:prat,
+                otfprt:otfprt,
+                WorkingTime:WorkingTime,
+                YworkingTime:YworkingTime,
+                PworkingTime:PworkingTime,
+                honor:honor,
+                mawbaw:mawbaw,
+                spouse:spouse,
+                provideDisasterRelief:provideDisasterRelief
+            })
+            $.ajax({
+                url : "http://localhost:8085/page",
+                type : "post",
+                // data表示发送的数据
+                data : str,
+                // 定义发送请求的数据格式为JSON字符串
+                contentType : "application/json;charset=UTF-8",
+                //定义回调响应的数据格式为JSON字符串,该属性可以省略
+                dataType : "json",
+                //成功响应的结果
+                success : function(data) {
+                    alert("提交成功！")
+                },
+                error : function (){
+                    alert("错误");
+                }
+
+            });
+        }
+
+        // $(function () {
+        //     $('#f1').on('submit',function (e) {
+        //         e.preventDefault()
+        //         var formdata = $('#f1').serialize()
+        //         formdata = JSON.parse(formdata)
+        //         alert(formdata);
+        //         $.ajax({
+        //             url : "http://localhost:8085/page",
+        //             type : "post",
+        //             // data表示发送的数据
+        //             data : formdata,
+        //             // 定义发送请求的数据格式为JSON字符串
+        //             contentType : "application/json;charset=UTF-8",
+        //             //定义回调响应的数据格式为JSON字符串,该属性可以省略
+        //             dataType : "json",
+        //             success : function(data) {
+        //                 alert("提交成功！")
+        //             },
+        //             error : function (){
+        //                 alert("错误");
+        //             }
+        //         })
+        //     })
+        // })
+
+        function shuju(){
+            $.ajax({
+                url: "http://localhost:8085/name",
+                type: "post",
+                // 定义发送请求的数据格式为JSON字符串
+                contentType: "application/json;charset=UTF-8",
+                //定义回调响应的数据格式为JSON字符串,该属性可以省略
+                dataType: "json",
+                //成功响应的结果
+                success: function (data) {
+                    //alert(data)
+                    $("#name").html(data.name);
+                },
+                error: function () {
+                    alert("错误");
+                }
+
+            });
+        }
+        shuju();
+
+        function Integral(){
+            $.ajax({
+                url: "http://localhost:8085/Integral",
+                type: "post",
+                // 定义发送请求的数据格式为JSON字符串
+                contentType: "application/json;charset=UTF-8",
+                //定义回调响应的数据格式为JSON字符串,该属性可以省略
+                dataType: "json",
+                //成功响应的结果
+                success: function (data) {
+                    //alert(data)
+                    $("#integral").html(data.integral);
+                },
+                error: function () {
+                    alert("错误");
+                }
+
+            });
+        }
+        Integral();
+    </script>
+
+</head>
+<body>
+<h2>企业公寓分配报名</h2>
+
+    <b>姓名：</b><b id="name"></b>
+    <br>
+    <b>积分：</b><b id="integral"></b>
+    <br>
+<form id="f1">
+    <input type="text" name="department" id = "department" placeholder="部门"/>
+    <br/>
+    <input type="text" name="post" id = "post" placeholder="职务"/>
+    <br/>
+    <input type="text" name="prat" id = "prat" placeholder="职称"/>
+    <br/>
+    <input type="text" name="otfprt" id = "otfprt" placeholder="职称获取时间"/>
+    <br/>
+    <input type="text" name="WorkingTime" id = "WorkingTime" placeholder="参加工作时间"/>
+    <br/>
+    <input type="text" name="YworkingTime" id = "YworkingTime" placeholder="来猿码时代工作时间"/>
+    <br/>
+    <input type="text" name="PworkingTime" id = "PworkingTime" placeholder="来青岛工作时间"/>
+    <br/>
+    <input type="text" name="honor" id = "honor" placeholder="表彰与荣誉"/>
+    <br/>
+    <input type="text" name="mawbaw" id = "mawbaw" placeholder="是否双职工"/>
+    <br/>
+    <input type="text" name="spouse" id = "spouse" placeholder="配偶姓名与工作单位"/>
+    <br/>
+    <input type="text" name="provideDisasterRelief" id = "provideDisasterRelief" placeholder="援疆，援外,援鄂救灾情况"/>
+    <br/>
+    <!--<button type="submit">提交</button>onclick="Page()-->
+    <!--<input type="button" value="查看" onclick="Pa()"/>-->
+    <input type="button" value="提交信息" onclick="Page()"/>
+    <br/>
+</form>
+</body>
+</html>

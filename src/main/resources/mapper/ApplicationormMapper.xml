@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aar.mapper.ApplicationormMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.aar.pojo.Applicationorm">
+        <id column="id" property="id" />
+        <result column="department" property="department" />
+        <result column="post" property="post" />
+        <result column="prat" property="prat" />
+        <result column="otfprt" property="otfprt" />
+        <result column="WorkingTime" property="WorkingTime" />
+        <result column="YworkingTime" property="YworkingTime" />
+        <result column="PworkingTime" property="PworkingTime" />
+        <result column="Honor" property="Honor" />
+        <result column="mawbaw" property="mawbaw" />
+        <result column="spouse" property="spouse" />
+        <result column="ProvideDisasterRelief" property="ProvideDisasterRelief" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, department, post, prat, otfprt, WorkingTime, YworkingTime, PworkingTime, Honor, mawbaw, spouse, ProvideDisasterRelief
+    </sql>
+
+    <insert id="insertone" >
+        insert  into `applicationorm`(`id`,`department`,`post`,`prat`,`otfprt`,`WorkingTime`,`YworkingTime`,`PworkingTime`,`Honor`,`mawbaw`,`spouse`,`ProvideDisasterRelief`)
+        values(#{id},#{department},#{post},#{prat},#{otfprt},#{WorkingTime},#{YworkingTime},#{PworkingTime},#{Honor},#{mawbaw},#{spouse},#{ProvideDisasterRelief});
+    </insert>
+</mapper>

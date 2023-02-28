@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aar.mapper.PersonalinformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.aar.pojo.Personalinformation">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="cpnumber" property="cpnumber" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, cpnumber
+    </sql>
+
+    <select id="selectone" resultMap="BaseResultMap">
+        SELECT id,name,cpnumber FROM personalinformation where id = #{id};
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from personalinformation;
+    </select>
+</mapper>

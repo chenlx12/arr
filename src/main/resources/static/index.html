@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="Charcoal is a free Bootstrap 4 UI kit build by @attacomsian at Wired Dots." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script>
+    function login() {
+      var id = $("#id").val();
+      var name = $("#name").val();
+      var cpnumber = $("#cpnumber").val();
+      $.ajax({
+        url : "http://localhost:8085/login",
+        type : "post",
+        // data表示发送的数据
+        data : JSON.stringify({id : id, name : name, cpnumber : cpnumber}),
+        // 定义发送请求的数据格式为JSON字符串
+        contentType : "application/json;charset=UTF-8",
+        //定义回调响应的数据格式为JSON字符串,该属性可以省略
+        dataType : "json",
+        //成功响应的结果
+        success : function(data) {
+          if (data != null) {
+            //alert(data)
+            location.href = "ApplicationPage.html";
+          }
+        },
+       error : function (){
+          alert("账号错误");
+        }
+
+      });
+    }
+  </script>
+</head>
+<body>
+<h2>企业公寓分配报名</h2>
+<form>
+  <input type="text" id = "id" placeholder="身份证号"/>
+  <br/>
+  <input type="text" id = "name" placeholder="真实姓名"/>
+  <br/>
+  <input type="text" id = "cpnumber" placeholder="手机号"/>
+  <input type="button" value="提交信息" onclick="login()"/>
+  <br/>
+</form>
+</body>
+</html>
